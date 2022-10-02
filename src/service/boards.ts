@@ -13,7 +13,10 @@ export async function getBoardById(id: string) {
 
 export async function createBoard(title: string) {
   const response = await axios.post('http://localhost:1337/api/boards', {
-    title: title,
+    data:{
+      title,
+    }
+    
   })
   console.log(response);
 }

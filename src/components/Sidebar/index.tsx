@@ -5,6 +5,7 @@ import { Spinner } from '../../common/Spinner';
 //import { Switch } from '../../common/Switch';
 import './Sidebar.scss';
 import { Navbar } from './components/Navbar';
+import { ModalAddBoard } from '../../common/ModalAddBoard/ModalAddBoard';
 import logoImg from './images/logo.png';
 import iconImg from './images/icon-board.png';
 
@@ -21,16 +22,22 @@ export type Board = {
 
 export function Sidebar() {
   const [state, setState] = useState<Board[] | null>(null);
+  const [active, setActive] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSend, setIsSend] = useState<boolean>(false);
+
+  const handleActive = () => setActive(true);
+  const handleInActive = () => setActive(false);
 
   useEffect(() => {
     setIsLoading(true);
     getAllBoards().then(data => setState(data));
     setIsLoading(false);
-  }, [])
+  }, [isSend])
 
-  function handleCreateBoard() {
-    createBoard('123');
+  function handleCreateBoard(name: string) {
+    createBoard(name);
+    setIsSend(true);
   }
 
   return (
@@ -46,10 +53,11 @@ export function Sidebar() {
           </Col>
         </Row>
         {isLoading ? <Spinner /> : <Navbar list={state!} />}
-        <button className='sidebar__button' onClick={handleCreateBoard}>
+        <button className='sidebar__button' onClick={handleActive}>
           <img src={iconImg} alt="icon" className='sidebar__img'/>
           + Create New Board
         </button>
+        <ModalAddBoard active={active} setActive={handleInActive} onCreate={handleCreateBoard}/>
       </div>
       {/*<Switch />*/}
     </div>

@@ -1,0 +1,52 @@
+.modal-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modal-wrapper.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal.active {
+    opacity: 1;
+}
+
+.modal {
+    background-color: var(--light);
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 14px;
+    color: var(--light-text);
+    opacity: 0;
+    transition: 0.4s all;
+    height: 500px;
+    width: 400px;
+    &__input {
+        border: 1px solid var(--darken-text);
+    }
+    &__input::placeholder {
+        color: var(--darken-text);
+        padding: 0 5px;
+    }
+    &__button {
+        display: inline-block;
+        color: var(--light-text);
+        background-color: var(--accent);
+    }
+    &__subtasks__button {
+        display: inline-block;
+        color: var(--accent);
+        background-color: var(--light-text);
+    }
+}

@@ -1,13 +1,26 @@
+import { useState, ChangeEvent } from 'react';
 import './modal.scss';
 
-export function ModalAddTask() {
+type Props = {
+    active: boolean,
+    setActive: () => void
+}
+
+export function ModalAddTask({active, setActive} : Props) {
+    const [state, setState] = useState('');
+
+    //function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    //    setState(e.target.value)
+    //  }
+    
+    //  function handleCreate() {
+    //    onCreate(state);
+    //    setActive();
+    //  }
+
     return(
-        <div className="modal-wrapper"
-        //{active ? "modal-wrapper active" : "modal-wrapper"} 
-        //onClick={setActive(false)}
-        >
-            <div className="modal" 
-            //{active ? "modal-wrapper active" : "modal-wrapper"}
+        <div active={active} setInActive={setActive} className={active ? "modal-wrapper active" : "modal-wrapper"} onClick={setActive}>
+            <div className={active ? "modal active" : "modal"}
             onClick={e => e.stopPropagation()}>
                 <h2 className="modal__header">Add New Task</h2>
                 <form >
