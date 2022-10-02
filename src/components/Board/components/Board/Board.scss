@@ -1,0 +1,50 @@
+.tasks {
+    padding-left: 20px;
+}
+
+.task__title {
+    font-size: 16px;
+    color: var(--darken-text);
+    font-weight: semi-bold;
+    text-align: start;
+    padding-inline: 25px;
+    vertical-align: middle;
+}
+
+.task__title::before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: rgb(57, 246, 230);
+    vertical-align: middle;
+}
+
+.task__title__doing::before {
+    background-color: var(--accent);
+}
+
+.task__title__done::before {
+    background-color: rgb(0, 253, 139);
+}
+
+.task_item {
+    background-color: var(--light);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    &__link {
+        text-decoration: none;
+        color: var(--darken-text);
+    }
+    &__link:hover {
+        color: var(--darken-text);
+    }
+    &__title {
+        color: var(--light-text);
+        font-size: 16px;
+    }
+}

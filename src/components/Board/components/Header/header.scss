@@ -1,0 +1,33 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light);
+    padding: 2.222vh 2vw;
+    &__title {
+        font-size: 20px;
+        padding-bottom: 10px;
+        margin: 0;
+        padding: 0;
+    }
+    &__button {
+        background-color: var(--accent);
+        border: 1px solid var(--accent);
+        border-radius: 20px;
+        color: var(--light-text);
+        font-weight: semi-bold;
+        padding: 10px 25px;
+        font-size: 14px;
+        letter-spacing: 0.25px;
+    }
+    &__img {
+        margin-inline: 20px;
+        height: 20px;
+        max-width: 30px;
+    }
+}
+
+header-wrapper {
+    display: flex;
+    align-items: center;
+}

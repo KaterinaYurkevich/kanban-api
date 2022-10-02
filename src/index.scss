@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import "~bootstrap/scss/bootstrap";
+:root {
+    --light: #2c2c38;
+    --dark: #21212d;
+    --accent: #645fc6;
+    --light-text: #fbfcff;
+    --darken-text: #8b8e9d;
+    --purple-text: #585592;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--dark);
+    color: var(--light-text);
+}
