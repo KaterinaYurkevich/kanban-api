@@ -19,39 +19,41 @@ export function ModalAddTask({active, setActive} : Props) {
     //  }
 
     return(
-        <div active={active} setInActive={setActive} className={active ? "modal-wrapper active" : "modal-wrapper"} onClick={setActive}>
-            <div className={active ? "modal active" : "modal"}
+        <div active={active} setInActive={setActive} className={active ? "modal-task-wrapper active" : "modal-task-wrapper"} onClick={setActive}>
+            <div className={active ? "modal-task active" : "modal-task"}
             onClick={e => e.stopPropagation()}>
-                <h2 className="modal__header">Add New Task</h2>
-                <form >
-                    <label>Title
-                        <input className="modal__input" type="text" placeholder="e.g Take coffee break" 
+                <h3 className="modal-task__header">Add New Task</h3>
+                <form className="modal-task__form">
+                    <label className="modal-task__input-wrapper">Title
+                        <input className="modal-task__input" type="text" placeholder="e.g Take coffee break" 
                         //value={titleValue} onChange={(e) => updateTitle(e.target.value)} 
                         />
                     </label>
-                    <label>Description
-                        <textarea className="modal__input" type="text" cols="30" rows="10" placeholder="e.g It/'s always good to take a break. This 15 minute break will recharge the batteries a little" 
+                    <label className="modal-task__input-wrapper">Description
+                        <textarea className="modal-task__input" type="text" 
+                        cols="45" rows="5" 
+                        placeholder="e.g It/'s always good to take a break. This 15 minute break will recharge the batteries a little" 
                         //value={textValue} onChange={(e) => updateText(e.target.value)} 
                         />
                     </label>
-                    <div className="modal__subtasks">
-                        <h3>Subtasks</h3>
-                        <input type="text" placeholder="e.g Make coffee" 
+                    <div className="modal-task__subtasks">
+                        <h4>Subtasks</h4>
+                        <input className="modal-task__subtasks-input" type="text" placeholder="e.g Make coffee" 
                         //value={subValue1} onChange={(e) => updateSub(e.target.value)}
                         />
-                        <input type="text" placeholder="e.g Drink coffee & smile"
+                        <input className="modal-task__subtasks-input" type="text" placeholder="e.g Drink coffee & smile"
                         // value={subValue2} onChange={(e) => updateSub(e.target.value)} 
                         />
-                        <button className="modal__subtasks__button">+ Add New Subtask</button>
+                        <button className="modal-task__subtasks__button">+ Add New Subtask</button>
                     </div>
-                    <label>Status
-                        <select>
+                    <label className="modal-task__select-wrapper">Status
+                        <select className="modal-task__select">
                             <option value="Todo">Todo</option>
                             <option value="Doing">Doing</option>
                             <option value="Done">Done</option>
                         </select>
                     </label>
-                    <button className="modal__button" type='submit'>Create Task</button>
+                    <button className="modal-task__button" type='submit'>Create Task</button>
                 </form>
             </div>
         </div>

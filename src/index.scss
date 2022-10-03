@@ -2,6 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 :root {
     --light: #2c2c38;
+    --light-border: #48484f;
     --dark: #21212d;
     --accent: #645fc6;
     --light-text: #fbfcff;
@@ -16,4 +17,5 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background: var(--dark);
     color: var(--light-text);
+    padding: 0;
 }

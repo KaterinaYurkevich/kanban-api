@@ -1,4 +1,4 @@
-.modal-wrapper {
+.modal-task-wrapper {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
@@ -13,16 +13,16 @@
     transition: 0.5s;
 }
 
-.modal-wrapper.active {
+.modal-task-wrapper.active {
     opacity: 1;
     pointer-events: all;
 }
 
-.modal.active {
+.modal-task.active {
     opacity: 1;
 }
 
-.modal {
+.modal-task {
     background-color: var(--light);
     border-radius: 5px;
     padding: 20px;
@@ -30,23 +30,87 @@
     color: var(--light-text);
     opacity: 0;
     transition: 0.4s all;
-    height: 500px;
     width: 400px;
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+    &__input-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
     &__input {
         border: 1px solid var(--darken-text);
+        background-color: var(--light);
+        border-color: var(--light-border);
+        border-radius: 5px;
+        margin: 10px 0;
     }
     &__input::placeholder {
         color: var(--darken-text);
         padding: 0 5px;
     }
+    &__input:focus {
+        outline: none;
+    }
+    &__select-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    &__select {
+        border: 1px solid var(--darken-text);
+        background-color: var(--light);
+        border-color: var(--light-border);
+        border-radius: 5px;
+        margin: 10px 0;
+        color: var(--light-text);
+        padding: 5px 10px;
+        font-size: 12px;
+        display: inline-block;
+        outline: none;
+    }
+    &__select:focus {
+        outline: none;
+    }
     &__button {
         display: inline-block;
         color: var(--light-text);
         background-color: var(--accent);
+        border-radius: 15px;
+        border-color: var(--accent);
+        padding: 3px 0;
     }
     &__subtasks__button {
         display: inline-block;
         color: var(--accent);
         background-color: var(--light-text);
+        border-radius: 15px;
+        border-color: var(--light-text);
+        padding: 3px 0;
+        margin: 5px 0 10px;
     }
+    &__subtasks {
+        display: flex;
+        flex-direction: column;
+    }
+    &__subtasks-input {
+        border: 1px solid var(--darken-text);
+        background-color: var(--light);
+        border-color: var(--light-border);
+        border-radius: 5px;
+        margin: 10px 0;
+    }
+    &__subtasks-input:focus {
+        outline: none;
+    }
+}
+
+.modal-task h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-task h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
 }
