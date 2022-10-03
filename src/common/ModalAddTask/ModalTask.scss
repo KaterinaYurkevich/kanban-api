@@ -46,6 +46,10 @@
         border-radius: 5px;
         margin: 10px 0;
     }
+    &__textarea {
+        max-width: 360px;
+        min-height: 150px;
+    }
     &__input::placeholder {
         color: var(--darken-text);
         padding: 0 5px;

@@ -1,4 +1,4 @@
-import './ModalAddBoard.scss';
+import './ModalBoard.scss';
 import { useState, ChangeEvent } from 'react';
 
 type Props = {
@@ -21,7 +21,7 @@ export function ModalAddBoard({ active, setActive, onCreate }: Props) {
 
   return (
     <>
-      <div active={active} setInActive={setActive}className={active ? "modal-board-wrapper active" : "modal-board-wrapper"} onClick={setActive}>
+      <div active={active} setInActive={setActive} className={active ? "modal-board-wrapper active" : "modal-board-wrapper"} onClick={setActive}>
         <div className={active ? "modal-board active" : "modal-board"} onClick={e => e.stopPropagation()}>
           <h3>Create new board</h3>
           <label>Title

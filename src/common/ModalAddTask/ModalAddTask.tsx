@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from 'react';
-import './modal.scss';
+import './ModalTask.scss';
 
 type Props = {
     active: boolean,
@@ -30,9 +30,7 @@ export function ModalAddTask({active, setActive} : Props) {
                         />
                     </label>
                     <label className="modal-task__input-wrapper">Description
-                        <textarea className="modal-task__input" type="text" 
-                        cols="45" rows="5" 
-                        placeholder="e.g It/'s always good to take a break. This 15 minute break will recharge the batteries a little" 
+                        <textarea className="modal-task__input modal-task__textarea" type="text" placeholder="e.g It/'s always good to take a break. This 15 minute break will recharge the batteries a little" 
                         //value={textValue} onChange={(e) => updateText(e.target.value)} 
                         />
                     </label>

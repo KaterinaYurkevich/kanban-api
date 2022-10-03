@@ -42,6 +42,9 @@
         margin: 20px 0;
         width: 250px;
     }
+    &__input:focus {
+        outline: none;
+    }
     &__input::placeholder {
         color: var(--darken-text);
         padding: 0 5px;
