@@ -1,37 +1,49 @@
 import { useState, ChangeEvent } from 'react';
-import './ModalTask.scss';
+import { addNewTask } from '../../service/tasks';
+import 'index.scss';
 
 type Props = {
-    active: boolean,
-    setActive: () => void
+    isActive: boolean,
+    setActive: () => void,
+    boardTitle: string
 }
 
-export function ModalAddTask({active, setActive} : Props) {
-    const [state, setState] = useState('');
+export function ModalAddTask({isActive, setActive, boardTitle} : Props) {
+    const [stateTitle, setStateTitle] = useState('');
+    const [stateDescr, setStateDescr] = useState('');
+    const [stateStatus, setStateStatus] = useState('');
 
-    //function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    //    setState(e.target.value)
-    //  }
+    function handleChangeTitle(e: ChangeEvent<HTMLInputElement>) {
+        setStateTitle(e.target.value)
+    }
+
+    function handleChangeDescr(e: ChangeEvent<HTMLTextAreaElement>) {
+        setStateDescr(e.target.value)
+    }
+
+    function handleChangeStatus(e: ChangeEvent<HTMLSelectElement>) {
+        setStateStatus(e.target.value)
+    }    
     
-    //  function handleCreate() {
-    //    onCreate(state);
-    //    setActive();
-    //  }
+    function handleCreate() {
+        addNewTask({ title: stateTitle, description: stateDescr, status: stateStatus, boardsTitle: boardTitle })        
+        setActive();
+    }
 
     return(
-        <div active={active} setInActive={setActive} className={active ? "modal-task-wrapper active" : "modal-task-wrapper"} onClick={setActive}>
-            <div className={active ? "modal-task active" : "modal-task"}
+        <div isActive={isActive} setInActive={setActive} className={isActive ? "modal-task-wrapper active" : "modal-task-wrapper"} onClick={setActive}>
+            <div className={isActive ? "modal-task active" : "modal-task"}
             onClick={e => e.stopPropagation()}>
                 <h3 className="modal-task__header">Add New Task</h3>
                 <form className="modal-task__form">
                     <label className="modal-task__input-wrapper">Title
-                        <input className="modal-task__input" type="text" placeholder="e.g Take coffee break" 
-                        //value={titleValue} onChange={(e) => updateTitle(e.target.value)} 
+                        <input className="modal-task__input" type="text" placeholder="e.g Take coffee break" required
+                        onChange={handleChangeTitle} 
                         />
                     </label>
                     <label className="modal-task__input-wrapper">Description
-                        <textarea className="modal-task__input modal-task__textarea" type="text" placeholder="e.g It/'s always good to take a break. This 15 minute break will recharge the batteries a little" 
-                        //value={textValue} onChange={(e) => updateText(e.target.value)} 
+                        <textarea className="modal-task__input modal-task__textarea" placeholder="e.g It/'s always good to take a break. This 15 minute break will recharge the batteries a little" 
+                        onChange={handleChangeDescr} 
                         />
                     </label>
                     <div className="modal-task__subtasks">
@@ -45,13 +57,13 @@ export function ModalAddTask({active, setActive} : Props) {
                         <button className="modal-task__subtasks__button">+ Add New Subtask</button>
                     </div>
                     <label className="modal-task__select-wrapper">Status
-                        <select className="modal-task__select">
+                        <select className="modal-task__select" onChange={handleChangeStatus}>
                             <option value="Todo">Todo</option>
                             <option value="Doing">Doing</option>
                             <option value="Done">Done</option>
                         </select>
                     </label>
-                    <button className="modal-task__button" type='submit'>Create Task</button>
+                    <button className="modal-task__button" type="submit" onClick={handleCreate}>Create Task</button>
                 </form>
             </div>
         </div>

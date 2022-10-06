@@ -3,26 +3,16 @@ import { Row, Col } from 'react-bootstrap';
 import { createBoard, getAllBoards } from '../../service/boards';
 import { Spinner } from '../../common/Spinner';
 //import { Switch } from '../../common/Switch';
-import './Sidebar.scss';
+import 'index.scss';
 import { Navbar } from './components/Navbar';
 import { ModalAddBoard } from '../../common/ModalAddBoard/ModalAddBoard';
 import logoImg from './images/logo.png';
 import iconImg from './images/icon-board.png';
-
-export type Board = {
-  id: number,
-  attributes: {
-    createdAt: string,
-    publishedAt: string,
-    title: string,
-    updateAt: string,
-  },
-  status?: boolean,
-}
+import { Board } from '../../models/boards';
 
 export function Sidebar() {
   const [state, setState] = useState<Board[] | null>(null);
-  const [active, setActive] = useState<boolean>(false);
+  const [isActive, setActive] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSend, setIsSend] = useState<boolean>(false);
 
@@ -57,7 +47,7 @@ export function Sidebar() {
           <img src={iconImg} alt="icon" className='sidebar__img'/>
           + Create New Board
         </button>
-        <ModalAddBoard active={active} setActive={handleInActive} onCreate={handleCreateBoard}/>
+        <ModalAddBoard isActive={isActive} setActive={handleInActive} onCreate={handleCreateBoard}/>
       </div>
       {/*<Switch />*/}
     </div>

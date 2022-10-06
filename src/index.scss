@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 @import "~bootstrap/scss/bootstrap";
+@import 'styles/Board.scss';
+@import 'styles/body.scss';
+@import 'styles/header.scss';
+@import 'styles/ModalBoard.scss';
+@import 'styles/ModalTask.scss';
+@import 'styles/SideBar.scss';
 :root {
     --light: #2c2c38;
     --light-border: #48484f;
@@ -12,6 +18,7 @@
 
 body {
     margin: 0;
+    width: 100vw;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

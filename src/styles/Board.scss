@@ -18,8 +18,11 @@
     width: 15px;
     height: 15px;
     border-radius: 15px;
-    background-color: rgb(57, 246, 230);
     vertical-align: middle;
+}
+
+.task__title__todo::before {
+    background-color: rgb(57, 246, 230);
 }
 
 .task__title__doing::before {
@@ -39,8 +42,9 @@
     &__link {
         text-decoration: none;
         color: var(--darken-text);
+        font-size: 14px;
     }
-    &__link:hover {
+    &__title:hover {
         color: var(--darken-text);
     }
     &__title {

@@ -1,39 +1,30 @@
-import { useState, useEffect } from 'react';
-import { getBoardById } from '../../../../service/boards';
+import { useState } from 'react';
+//import { getBoardById } from '../../../../service/boards';
 import menuImg from '../../menu.png';
-import './header.scss';
+import 'index.scss';
 import { ModalAddTask } from '../../../../common/ModalAddTask/ModalAddTask';
 
 type Props = {
-  id: string;
+  title: string,
 };
 
-export function Header({id}: Props) {
+export function Header({title}: Props) {
+  const [isActive, setActive] = useState<boolean>(false);
   
-  console.log(id);
-
-  const [state, setState] = useState<string | null>(null);
-  const [active, setActive] = useState<boolean>(false);
-
-  useEffect(() => {
-    getBoardById(id).then(data => setState(data.attributes.title));
-    console.log(state);
-  }, []);
-
   const handleActive = () => setActive(true);
   const handleInActive = () => setActive(false);
 
   return (   
     <> 
     <div className='header'>
-      <h2 className='header__title'>Board</h2>
+      <h2 className='header__title'>{title}</h2>
       <div className='header-wrapper'>
         <button className='header__button' onClick={handleActive}>+ Add New Task</button>
         <img src={menuImg} alt="logo" className='header__img' />
       </div>
     </div>
     <ModalAddTask 
-    active={active} setActive={handleInActive} 
+    isActive={isActive} setActive={handleInActive} boardTitle={title} 
     />
     </>    
   )

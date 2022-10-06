@@ -1,12 +1,15 @@
-import './App.scss';
-import { Sidebar } from './components/Sidebar';
-import { BoardsMain } from './components/Board';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { BoardsMain, Sidebar } from './components';
+
+const client = new QueryClient();
 
 export default function App() {
   return (
-    <div className="App">
-      <Sidebar />
-      <BoardsMain />
-    </div>
+    <QueryClientProvider client={client}>
+      <div className="App">
+        <Sidebar />
+        <BoardsMain />
+      </div>
+    </QueryClientProvider>
   );
 }

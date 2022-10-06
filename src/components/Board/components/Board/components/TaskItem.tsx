@@ -1,30 +1,18 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Tasks } from '../index';
-import '../Board.scss';
+import { Task } from '../../../../../models/task';
+import 'index.scss';
 
 type Props = {
-  data: Tasks,
+  data: Task,
+  id: string | undefined,
 }
 
-export function TaskItem({ data } : Props) {
-//  const [isActive, setIsActive] = useState('navbar__link');
-
-//  const handleActive = (data.id) => {
-//    data.status = true;
-//    if (data.status) {
-//      setIsActive('navbar__link navbar__link__active');
-//    }
-//      setIsActive('navbar__link');
-//    console.log(isActive);  
-//  }
-
-
+export function TaskItem({ data, id } : Props) {  
   return (
     <div className='task_item'>
-        <Link className='task_item__link' key={data.id} to={`/board/${data.attributes.title}`} >
+        <Link className='task_item__link' key={data.id} to={`/boards/${id}/${data.attributes.title}`} >
             <h4 className='task_item__title'>{data.attributes.title}</h4>
-            <p className='task_item__text'>{data.attributes.title}</p>
+            <p className='task_item__text'>{data.attributes.description}</p>
         </Link>
     </div>
   )

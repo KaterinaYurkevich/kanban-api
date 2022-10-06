@@ -1,46 +1,28 @@
-import { useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { getAllTasks } from '../../../../service/tasks';
-import { Spinner } from '../../../../common/Spinner';
 import { TodoTasks } from './components/TodoTasks';
 import { DoingTasks } from './components/DoingTasks';
 import { DoneTasks } from './components/DoneTasks';
-import './Board.scss';
+import { Task } from '../../../../models/task';
+import 'index.scss';
 
-export type Tasks = {
-  id: number,
-  attributes: {
-    description: string | null,
-    status: string,
-    createdAt: string,
-    publishedAt: string,
-    title: string,
-    updateAt: string,
-  },
-  active?: boolean,
-};
+type Props = {
+  tasks: Task[],
+  id: string | undefined,
+}
 
-export function Board() {
-  const [state, setState] = useState<Tasks[] | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    getAllTasks().then(data => setState(data));
-    setIsLoading(false);  
-  }, [])   
-
+export function Board({ tasks, id }: Props ) {
+ 
   return (
     <div className='board__body'>
       <Row style={{ marginBlock: '20px' }}>
         <Col style={{ padding: '0 5px' }}>
-          {isLoading ? <Spinner /> : <TodoTasks list={state!} />}
+          <TodoTasks list={tasks!} id={id}/>
         </Col>
         <Col style={{ padding: '0 5px' }}>
-          {isLoading ? <Spinner /> : <DoingTasks list={state!} />}
+          <DoingTasks list={tasks!} id={id}/>
         </Col>
         <Col style={{ padding: '0 5px' }}>
-          {isLoading ? <Spinner /> : <DoneTasks list={state!} />}
+          <DoneTasks list={tasks!} id={id}/>
         </Col>
       </Row>
     </div>

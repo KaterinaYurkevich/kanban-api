@@ -45,6 +45,7 @@
         border-color: var(--light-border);
         border-radius: 5px;
         margin: 10px 0;
+        color: var(--light-text);
     }
     &__textarea {
         max-width: 360px;
@@ -103,6 +104,7 @@
         border-color: var(--light-border);
         border-radius: 5px;
         margin: 10px 0;
+        color: var(--light-text);
     }
     &__subtasks-input:focus {
         outline: none;

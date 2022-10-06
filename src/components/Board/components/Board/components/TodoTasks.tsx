@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Tasks } from '../index';
+import { Task } from '../../../../../models/task';
 import { TaskItem } from './TaskItem';
-import '../Board.scss';
+import 'index.scss';
 
 type Props = {
-  list: Tasks[],
+  list: Task[],
+  id: string | undefined,
 }
 
-export function TodoTasks({ list }: Props) {
-    const [state, setState] = useState<Tasks[] | null>(list);
+export function TodoTasks({ list, id }: Props) {
+    const [state, setState] = useState<Task[] | null>(list);
     
   useEffect(() => {
     let filteredData = list?.filter(data => data.attributes.status === 'todo');
@@ -17,9 +18,9 @@ export function TodoTasks({ list }: Props) {
  
   return (
     <section>
-        <h3 className='task__title'>TODO ({state?.length ? state?.length : 0})</h3>
+        <h3 className='task__title task__title__todo'>TODO ({state?.length ? state?.length : 0})</h3>
         <ul className='tasks'>
-          {state?.map(task => <TaskItem key={task.id} data={task} />)}
+          {state?.map(task => <TaskItem key={task.id} data={task} id={id} />)}
         </ul>
     </section>
   )
