@@ -14,24 +14,24 @@ export async function getAllTasks(id: string) {
 
 export async function addNewTask({title, description, status, boardsTitle}: BodyTask) {
   const route = title.split(' ').join('-').toLowerCase();
-  console.log(boardsTitle);
-  const response = await axios.post('http://localhost:1337/api/tasks', {
+
+  const response = await axios.post('http://localhost:1337/api/tasks/?populate=*', {
     data: {
       title,
       description,
       status,
-      route,
-      boards: {
-        data: {
-          boardsTitle
-        }
-      }
+      route
+      //boards: {
+      //  data: {
+      //    boardsTitle
+      //  }
+      //}
     }
   })
-console.log(title);
+
 if (!response) {
   console.log(boardsTitle);
-}
+} else console.log(title);
 
-  return response
+  //return response
 } 

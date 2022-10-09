@@ -1,3 +1,5 @@
+import { Board } from "./boards"
+
 export type Task = {
     id: number,
     attributes: {
@@ -5,6 +7,9 @@ export type Task = {
       description: string,
       status: string,
       route?: string,
+      boards?: {
+        data: Board[]
+      }
     }
 }
   
